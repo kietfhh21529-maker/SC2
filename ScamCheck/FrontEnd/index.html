@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ScamCheck AI</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="header">
+        <div class="brand">
+          <div class="brand-icon">🛡️</div>
+          <div>
+            <h1>ScamCheck AI</h1>
+            <p>Kiểm tra tin nhắn nghi ngờ lừa đảo trong vài giây</p>
+          </div>
+        </div>
+        <button class="history-btn" id="openHistoryBtn">Lịch sử</button>
+      </header>
+
+      <main>
+        <section class="screen active" id="homeScreen">
+          <div class="hero-grid">
+            <section class="main-card input-card">
+              <div class="section-label">Dán tin nhắn cần kiểm tra</div>
+              <textarea
+                id="messageInput"
+                placeholder="Ví dụ: Tài khoản ngân hàng của bạn đang bị khóa. Bấm vào link để xác minh ngay..."
+              ></textarea>
+
+              <div class="sample-buttons">
+                <button data-sample="bank">Tin giả ngân hàng</button>
+                <button data-sample="police">Tin giả công an</button>
+                <button data-sample="prize">Tin trúng thưởng</button>
+              </div>
+
+              <button class="primary-btn" id="analyzeBtn">Phân tích</button>
+            </section>
+
+            <aside class="main-card tips-card">
+              <h2>Dấu hiệu nên cảnh giác</h2>
+              <ul>
+                <li>Yêu cầu cung cấp OTP, mật khẩu hoặc số thẻ.</li>
+                <li>Giục chuyển tiền gấp hoặc đe dọa khóa tài khoản.</li>
+                <li>Đường link lạ, tên miền không giống tổ chức thật.</li>
+                <li>Giả danh ngân hàng, công an, shipper hoặc người quen.</li>
+              </ul>
+            </aside>
+          </div>
+        </section>
+
+        <section class="screen" id="loadingScreen">
+          <div class="loading-card main-card">
+            <div class="spinner"></div>
+            <h2>Thám tử AI đang phân tích tin nhắn...</h2>
+            <p>Vui lòng đợi trong giây lát.</p>
+          </div>
+        </section>
+
+        <section class="screen" id="resultScreen">
+          <div class="result-layout">
+            <section class="main-card risk-card" id="riskCard">
+              <div class="risk-content">
+                <p class="section-label">Mức độ rủi ro</p>
+                <h2 id="riskTitle">Nghiêm trọng</h2>
+                <p id="riskDescription">Tin nhắn có nhiều dấu hiệu lừa đảo rõ ràng.</p>
+                <div class="risk-meter" aria-label="Thanh mức độ rủi ro">
+                  <div class="risk-meter-fill" id="riskMeterFill"></div>
+                </div>
+              </div>
+              <div class="risk-badge" id="riskBadge">Nguy hiểm</div>
+            </section>
+
+            <section class="main-card">
+              <h2>Dấu hiệu lừa đảo</h2>
+              <ul class="warning-list" id="signList"></ul>
+            </section>
+
+            <section class="main-card">
+              <h2>Đoạn trích đáng ngờ</h2>
+              <p class="quote-box" id="suspiciousQuote"></p>
+            </section>
+
+            <section class="main-card">
+              <h2>3 hành động nên làm</h2>
+              <div class="action-list" id="actionList"></div>
+            </section>
+
+            <section class="main-card counselor-card">
+              <div class="avatar">👩‍🏫</div>
+              <div>
+                <h2>Cô tâm lý</h2>
+                <p id="counselorText">
+                  Con hãy bình tĩnh, đừng bấm vào liên kết và cũng đừng chuyển tiền. Hãy hỏi người thân hoặc gọi tổng đài chính thức để kiểm tra lại nhé.
+                </p>
+              </div>
+            </section>
+
+            <button class="secondary-btn" id="backHomeBtn">Kiểm tra tin khác</button>
+          </div>
+        </section>
+
+        <section class="screen" id="historyScreen">
+          <section class="main-card">
+            <div class="history-header">
+              <div>
+                <p class="section-label">Trang lịch sử</p>
+                <h2>10 tin gần nhất</h2>
+              </div>
+              <button class="secondary-btn small" id="closeHistoryBtn">Quay lại</button>
+            </div>
+            <div class="history-list" id="historyList"></div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <footer>
+      ScamCheck là công cụ giáo dục do nhóm học viên phát triển và không thay thế cảnh báo chính thức từ ngân hàng hoặc cơ quan chức năng.
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
