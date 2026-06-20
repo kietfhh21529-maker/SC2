@@ -20,6 +20,19 @@ app = Flask(
     static_folder=str(FRONTEND_DIR),
     static_url_path=""
 )
+
+app.config["JSON_AS_ASCII"] = False
+
+CORS(app)
+
+app = Flask(
+    __name__,
+    static_folder=str(FRONTEND_DIR),
+    static_url_path=""
+)
+
+app.config["JSON_AS_ASCII"] = False
+
 CORS(app)
 
 VALID_LEVELS = ["Thấp", "Trung bình", "Cao", "Nghiêm trọng"]
@@ -190,4 +203,8 @@ Giá trị của "level" chỉ được là một trong bốn giá trị:
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 10000)))
+    app.run(
+    debug=False,
+    host="0.0.0.0",
+    port=int(os.environ.get("PORT", 10000))
+    )
